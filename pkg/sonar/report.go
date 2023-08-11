@@ -2,6 +2,7 @@ package sonar
 
 import (
 	"fmt"
+	"os"
 	"os/exec"
 	"path/filepath"
 	"time"
@@ -23,6 +24,8 @@ func (c *Client) GenerateReports(sonarProject, author, branch, rootPath, artifac
 		branch,
 	)
 	cmd := exec.Command("java", reportParams...)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
 	if err := cmd.Run(); err != nil {
 		return fmt.Errorf(
 			"report generation failed: %w", err,

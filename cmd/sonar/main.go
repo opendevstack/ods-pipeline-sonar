@@ -9,9 +9,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/bix-digital/ods-pipeline-sonar/pkg/sonar"
 	"github.com/opendevstack/ods-pipeline/pkg/logging"
 	"github.com/opendevstack/ods-pipeline/pkg/pipelinectxt"
-	"github.com/opendevstack/ods-pipeline/pkg/sonar"
 )
 
 type options struct {
@@ -119,7 +119,7 @@ func sonarScan(
 		ctxt.GitCommitSHA,
 		prInfo,
 		os.Stdout,
-		os.Stdin,
+		os.Stderr,
 	)
 	if err != nil {
 		return fmt.Errorf("scan failed: %w", err)

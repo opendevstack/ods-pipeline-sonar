@@ -71,12 +71,7 @@ func (c *Client) Scan(sonarProject, branch, commit string, pr *PullRequest, outW
 	cmd := exec.Command("sonar-scanner", scannerParams...)
 	cmd.Stdout = outWriter
 	cmd.Stderr = errWriter
-	cmd.Env = []string{"SONAR_SCANNER_OPTS=" + strings.Join(c.javaSystemProperties(), " ")}
-	// return command.Run(
-	// 	"sonar-scanner", scannerParams,
-	// 	[]string{fmt.Sprintf("SONAR_SCANNER_OPTS=%s", strings.Join(c.javaSystemProperties(), " "))},
-	// 	outWriter, errWriter,
-	// )
+	cmd.Env = append(cmd.Env, "SONAR_SCANNER_OPTS="+strings.Join(c.javaSystemProperties(), " "))
 	return cmd.Run()
 }
 

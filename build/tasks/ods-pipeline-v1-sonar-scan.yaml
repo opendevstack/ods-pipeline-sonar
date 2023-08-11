@@ -1,0 +1,99 @@
+apiVersion: tekton.dev/v1beta1
+kind: '{{.TaskKind}}'
+metadata:
+  name: 'ods-pipeline-v1-sonar-scan'
+spec:
+  description: |
+    Builds Go applications.
+
+    See https://github.com/bix-digital/ods-pipeline-sonar/blob/v{{.Version}}/docs/ods-pipeline-v1-sonar-scan.adoc
+  params:
+    - name: working-dir
+      description: |
+        Working directory. The path must be relative to the root of the repository,
+        without leading `./` and trailing `/`.
+      type: string
+      default: "."
+    - name: quality-gate
+      description: Whether the SonarQube quality gate needs to pass for the task to succeed.
+      type: string
+      default: "false"
+  steps:
+    - name: scan-with-sonar
+      # Image is built from build/package/Dockerfile.sonar-scan.
+      image: '{{.ImageRepository}}/sonar-scan:{{.Version}}'
+      env:
+        - name: HOME
+          value: '/tekton/home'
+        - name: SONAR_URL
+          valueFrom:
+            configMapKeyRef:
+              key: url
+              name: ods-sonar
+        - name: SONAR_EDITION
+          valueFrom:
+            configMapKeyRef:
+              key: edition
+              name: ods-sonar
+        - name: SONAR_AUTH_TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: ods-sonar-auth
+        - name: DEBUG
+          valueFrom:
+            configMapKeyRef:
+              key: debug
+              name: ods-pipeline
+      resources: {}
+      script: |
+        mkdir -p .ods/artifacts/sonarqube-analysis
+
+        truststore="${JAVA_HOME}/lib/security/cacerts"
+        if [ -f /etc/ssl/certs/private-cert.pem ]; then
+          truststore="$(pwd)/.ods-cache/truststore/cacerts"
+          configure-truststore --dest-store "${truststore}"
+        fi
+
+        cd $(params.working-dir)
+        if [ ! -f sonar-project.properties ]; then
+          if [ -f go.mod ]; then
+            echo "No sonar-project.properties present, using Go default:"
+            cat /usr/local/default-sonar-project.properties.d/go.properties
+            cp /usr/local/default-sonar-project.properties.d/go.properties sonar-project.properties
+          elif [ -f package.json ]; then
+            echo "No sonar-project.properties present, using NPM default:"
+            cat /usr/local/default-sonar-project.properties.d/npm.properties
+            cp /usr/local/default-sonar-project.properties.d/npm.properties sonar-project.properties
+          elif [ -f requirements.txt ]; then
+            echo "No sonar-project.properties present, using Python default:"
+            cat /usr/local/default-sonar-project.properties.d/python.properties
+            cp /usr/local/default-sonar-project.properties.d/python.properties sonar-project.properties
+          elif [ -f build.gradle ]; then
+            echo "No sonar-project.properties present, using Gradle default:"
+            cat /usr/local/default-sonar-project.properties.d/gradle.properties
+            cp /usr/local/default-sonar-project.properties.d/gradle.properties sonar-project.properties
+          else
+            echo "could not detect type of source code, continuing without sonar-project.properties"
+          fi
+        fi
+        cd -
+
+        # sonar is built from cmd/sonar/main.go.
+        sonar \
+          -working-dir=$(params.working-dir) \
+          -quality-gate=$(params.quality-gate) \
+          -truststore "${truststore}"
+      volumeMounts:
+        - mountPath: /etc/ssl/certs/private-cert.pem
+          name: private-cert
+          readOnly: true
+          subPath: tls.crt
+      workingDir: $(workspaces.source.path)
+  volumes:
+    - name: private-cert
+      secret:
+        secretName: ods-private-cert
+        optional: true
+  workspaces:
+    - name: source

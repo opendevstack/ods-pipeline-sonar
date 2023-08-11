@@ -1,5 +1,5 @@
 apiVersion: tekton.dev/v1beta1
-kind: '{{.TaskKind}}'
+kind: 'Task'
 metadata:
   name: 'ods-pipeline-v1-sonar-scan'
 spec:

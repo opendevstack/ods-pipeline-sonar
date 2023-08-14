@@ -21,6 +21,7 @@ import (
 func TestSonarScanTask(t *testing.T) {
 	if err := runTask(
 		ott.WithGitSourceWorkspace(t, "../testdata/workspaces/go-sample-app"),
+		ttr.WithStringParams(map[string]string{"quality-gate": "true"}),
 		ttr.AfterRun(func(config *ttr.TaskRunConfig, run *tekton.TaskRun) {
 			wsDir, ctxt := ott.GetSourceWorkspaceContext(t, config)
 			ott.AssertFilesExist(t, wsDir,

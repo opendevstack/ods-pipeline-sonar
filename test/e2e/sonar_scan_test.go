@@ -1,6 +1,7 @@
 package e2e
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"log"
@@ -20,9 +21,9 @@ import (
 
 func TestSonarScanTask(t *testing.T) {
 	if err := runTask(
-		ott.WithGitSourceWorkspace(t, "../testdata/workspaces/go-sample-app"),
+		ott.WithGitSourceWorkspace(t, "../testdata/workspaces/go-sample-app", namespaceConfig.Name),
 		ttr.WithStringParams(map[string]string{"quality-gate": "true"}),
-		ttr.AfterRun(func(config *ttr.TaskRunConfig, run *tekton.TaskRun) {
+		ttr.AfterRun(func(config *ttr.TaskRunConfig, run *tekton.TaskRun, logs bytes.Buffer) {
 			wsDir, ctxt := ott.GetSourceWorkspaceContext(t, config)
 			ott.AssertFilesExist(t, wsDir,
 				filepath.Join(pipelinectxt.SonarAnalysisPath, "analysis-report.md"),

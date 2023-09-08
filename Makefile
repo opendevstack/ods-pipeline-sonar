@@ -33,15 +33,15 @@ tasks: ## Render tasks. Use "VERSION=1.0.0 make tasks" to render a specific vers
 	go run github.com/opendevstack/ods-pipeline/cmd/taskmanifest \
 		-data ImageRepository=ghcr.io/bix-digital/ods-pipeline-sonar \
 		-data Version=$(VERSION) \
-		-template build/tasks/ods-pipeline-v1-sonar-scan.yaml \
-		-destination tasks/ods-pipeline-v1-sonar-scan.yaml
+		-template build/tasks/scan.yaml \
+		-destination tasks/scan.yaml
 .PHONY: tasks
 
 docs: tasks ## Render documentation for tasks.
 	go run github.com/opendevstack/ods-pipeline/cmd/taskdoc \
-		-task tasks/ods-pipeline-v1-sonar-scan.yaml \
-		-description build/docs/ods-pipeline-v1-sonar-scan.adoc \
-		-destination docs/ods-pipeline-v1-sonar-scan.adoc
+		-task tasks/scan.yaml \
+		-description build/docs/scan.adoc \
+		-destination docs/scan.adoc
 .PHONY: docs
 
 ##@ Testing

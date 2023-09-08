@@ -1,6 +1,6 @@
 // File is generated; DO NOT EDIT.
 
-= ods-pipeline-v1-sonar-scan
+= ods-pipeline-sonar-scan
 
 Scan source code with SonarQube
 

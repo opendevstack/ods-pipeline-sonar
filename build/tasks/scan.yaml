@@ -1,14 +1,12 @@
-# File is generated; DO NOT EDIT.
-
 apiVersion: tekton.dev/v1beta1
-kind: 'Task'
+kind: Task
 metadata:
-  name: 'ods-pipeline-v1-sonar-scan'
+  name: ods-pipeline-sonar-scan
 spec:
   description: |
-    Builds Go applications.
+    Scans repositories using SonarQube.
 
-    See https://github.com/bix-digital/ods-pipeline-sonar/blob/vlatest/docs/ods-pipeline-v1-sonar-scan.adoc
+    See https://github.com/bix-digital/ods-pipeline-sonar/blob/v{{.Version}}/docs/scan.adoc
   params:
     - name: working-dir
       description: |
@@ -23,7 +21,7 @@ spec:
   steps:
     - name: scan-with-sonar
       # Image is built from build/package/Dockerfile.sonar-scan.
-      image: 'ghcr.io/bix-digital/ods-pipeline-sonar/sonar-scan:latest'
+      image: '{{.ImageRepository}}/sonar-scan:{{.Version}}'
       env:
         - name: HOME
           value: '/tekton/home'

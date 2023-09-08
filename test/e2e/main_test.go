@@ -13,7 +13,7 @@ import (
 var (
 	namespaceConfig *ttr.NamespaceConfig
 	rootPath        = "../.."
-	taskName        = "ods-pipeline-v1-sonar-scan"
+	taskName        = "ods-pipeline-sonar-scan"
 )
 
 func TestMain(m *testing.M) {
@@ -35,7 +35,7 @@ func testMain(m *testing.M) int {
 		ott.StartSonarQube(),
 		ott.InstallODSPipeline(),
 		ttr.InstallTaskFromPath(
-			filepath.Join(rootPath, "build/tasks/ods-pipeline-v1-sonar-scan.yaml"),
+			filepath.Join(rootPath, "build/tasks/scan.yaml"),
 			nil,
 		),
 	)

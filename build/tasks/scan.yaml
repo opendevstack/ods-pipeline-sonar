@@ -6,7 +6,7 @@ spec:
   description: |
     Scans repositories using SonarQube.
 
-    See https://github.com/bix-digital/ods-pipeline-sonar/blob/v{{.Version}}/docs/scan.adoc
+    See https://github.com/opendevstack/ods-pipeline-sonar/blob/v{{.Version}}/docs/scan.adoc
   params:
     - name: working-dir
       description: |

@@ -1,4 +1,4 @@
-module github.com/bix-digital/ods-pipeline-sonar
+module github.com/opendevstack/ods-pipeline-sonar
 
 go 1.19
 

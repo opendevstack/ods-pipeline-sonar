@@ -10,14 +10,14 @@ tasks:
   taskRef:
     resolver: git
     params:
-    - { name: url, value: https://github.com/bix-digital/ods-pipeline-sonar.git }
-    - { name: revision, value: latest }
+    - { name: url, value: https://github.com/opendevstack/ods-pipeline-sonar.git }
+    - { name: revision, value: main }
     - { name: pathInRepo, value: tasks/scan.yaml }
     workspaces:
     - { name: source, workspace: shared-workspace }
 ```
 
-See the [documentation](https://github.com/BIX-Digital/ods-pipeline-sonar/blob/main/docs/deploy.adoc) for details and available parameters.
+See the [documentation](https://github.com/opendevstack/ods-pipeline-sonar/blob/main/docs/deploy.adoc) for details and available parameters.
 
 ## About this repository
 

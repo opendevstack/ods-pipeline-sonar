@@ -31,7 +31,7 @@ image-sonar-scan: ## Build sonar-scan image.
 
 tasks: ## Render tasks. Use "VERSION=1.0.0 make tasks" to render a specific version.
 	go run github.com/opendevstack/ods-pipeline/cmd/taskmanifest \
-		-data ImageRepository=ghcr.io/bix-digital/ods-pipeline-sonar \
+		-data ImageRepository=ghcr.io/opendevstack/ods-pipeline-sonar \
 		-data Version=$(VERSION) \
 		-template build/tasks/scan.yaml \
 		-destination tasks/scan.yaml

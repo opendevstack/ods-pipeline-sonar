@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/bix-digital/ods-pipeline-sonar/pkg/sonar"
+	"github.com/opendevstack/ods-pipeline-sonar/pkg/sonar"
 	"github.com/opendevstack/ods-pipeline/pkg/logging"
 	"github.com/opendevstack/ods-pipeline/pkg/pipelinectxt"
 )

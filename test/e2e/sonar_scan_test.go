@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/bix-digital/ods-pipeline-sonar/pkg/sonar"
+	"github.com/opendevstack/ods-pipeline-sonar/pkg/sonar"
 	ott "github.com/opendevstack/ods-pipeline/pkg/odstasktest"
 	"github.com/opendevstack/ods-pipeline/pkg/pipelinectxt"
 	ttr "github.com/opendevstack/ods-pipeline/pkg/tektontaskrun"

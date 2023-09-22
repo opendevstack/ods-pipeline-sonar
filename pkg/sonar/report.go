@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/bix-digital/ods-pipeline-sonar/internal/file"
+	"github.com/opendevstack/ods-pipeline-sonar/internal/file"
 	"github.com/opendevstack/ods-pipeline/pkg/pipelinectxt"
 )
 

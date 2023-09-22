@@ -58,7 +58,7 @@ name: scan
 taskRef:
   resolver: git
   params:
-  - {name: url, value: https://github.com/bix-digital/ods-pipeline-sonar.git}
+  - {name: url, value: https://github.com/opendevstack/ods-pipeline-sonar.git}
   - {name: revision, value: main}
   - {name: pathInRepo, value: tasks/ods-pipeline-v1-sonar-scan.yaml}
   workspaces:

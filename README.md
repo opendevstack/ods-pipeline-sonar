@@ -17,7 +17,7 @@ tasks:
     - { name: source, workspace: shared-workspace }
 ```
 
-See the [documentation](https://github.com/opendevstack/ods-pipeline-sonar/blob/main/docs/deploy.adoc) for details and available parameters.
+See the [documentation](https://github.com/opendevstack/ods-pipeline-sonar/blob/main/docs/scan.adoc) for prerequisites, details and available parameters.
 
 ## About this repository
 

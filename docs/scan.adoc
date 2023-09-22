@@ -40,14 +40,14 @@ data:
 kind: Secret
 apiVersion: v1
 metadata:
-  name: 'ods-sonar-auth'
+  name: ods-sonar-auth
 type: kubernetes.io/basic-auth
 stringData:
   password: 'pwd'
   username: 'user'
 ```
 
-These may also be created via `kubectl`:
+These may be created via `kubectl` like this:
 ```
 kubectl create configmap ods-sonar --from-literal=url=https://sonarqube.example.com --from-literal=edition=community
 kubectl create secret generic ods-sonar-auth --type=kubernetes.io/basic-auth --from-literal=password=pwd --from-literal=username=user

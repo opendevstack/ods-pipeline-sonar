@@ -22,8 +22,8 @@ spec:
       default: "false"
   steps:
     - name: scan-with-sonar
-      # Image is built from build/package/Dockerfile.sonar-scan.
-      image: 'ghcr.io/opendevstack/ods-pipeline-sonar/sonar-scan:latest'
+      # Image is built from build/package/Dockerfile.scan.
+      image: 'ghcr.io/opendevstack/ods-pipeline-sonar/scan:latest'
       env:
         - name: HOME
           value: '/tekton/home'

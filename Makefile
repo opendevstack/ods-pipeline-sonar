@@ -19,15 +19,15 @@ help: ## Show this help screen.
 
 ##@ Building
 
-images: image-sonar-scan ## Build images.
+images: image-scan ## Build images.
 .PHONY: images
 
-image-sonar-scan: ## Build sonar-scan image.
+image-scan: ## Build scan image.
 	docker build \
-        -f build/images/Dockerfile.sonar-scan \
-		-t localhost:5000/ods-pipeline/sonar-scan \
+        -f build/images/Dockerfile.scan \
+		-t localhost:5000/ods-pipeline/scan \
 		.
-.PHONY: image-sonar-scan
+.PHONY: image-scan
 
 tasks: ## Render tasks. Use "VERSION=1.0.0 make tasks" to render a specific version.
 	go run github.com/opendevstack/ods-pipeline/cmd/taskmanifest \

@@ -29,7 +29,7 @@ func TestMain(m *testing.M) {
 func testMain(m *testing.M) int {
 	cc, err := ttr.StartKinDCluster(
 		ttr.LoadImage(ttr.ImageBuildConfig{
-			Dockerfile: "build/images/Dockerfile.sonar-scan",
+			Dockerfile: "build/images/Dockerfile.scan",
 			ContextDir: rootPath,
 		}),
 	)

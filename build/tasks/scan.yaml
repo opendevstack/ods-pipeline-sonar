@@ -20,8 +20,8 @@ spec:
       default: "false"
   steps:
     - name: scan-with-sonar
-      # Image is built from build/package/Dockerfile.sonar-scan.
-      image: '{{.ImageRepository}}/sonar-scan:{{.Version}}'
+      # Image is built from build/package/Dockerfile.scan.
+      image: '{{.ImageRepository}}/scan:{{.Version}}'
       env:
         - name: HOME
           value: '/tekton/home'

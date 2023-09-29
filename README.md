@@ -13,7 +13,7 @@ tasks:
     resolver: git
     params:
     - { name: url, value: https://github.com/opendevstack/ods-pipeline-sonar.git }
-    - { name: revision, value: main }
+    - { name: revision, value: v0.1.0 }
     - { name: pathInRepo, value: tasks/scan.yaml }
     workspaces:
     - { name: source, workspace: shared-workspace }

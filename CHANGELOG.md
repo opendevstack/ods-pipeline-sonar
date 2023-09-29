@@ -10,6 +10,8 @@ listed in the changelog.
 
 ## [Unreleased]
 
+## [0.1.0] - 2023-09-29
+
 NOTE: This version is based on v0.13.2 of the task step `sonar-scan`, which was included in `ods-build-go`, `ods-build-gradle`, `ods-build-npm` and `ods-build-python`. The step has been extracted into its own task for easier maintenance and more flexible use. Listed below are all updates compared to v0.13.2 of the task step.
 
 # Fixed

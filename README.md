@@ -1,5 +1,7 @@
 # ods-pipeline-sonar
 
+[![Tests](https://github.com/opendevstack/ods-pipeline-sonar/actions/workflows/main.yaml/badge.svg)](https://github.com/opendevstack/ods-pipeline-sonar/actions/workflows/main.yaml)
+
 Tekton task for use with [ODS Pipeline](https://github.com/opendevstack/ods-pipeline) to run the SonarQube scanner.
 
 ## Usage

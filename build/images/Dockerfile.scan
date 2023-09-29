@@ -52,7 +52,7 @@ COPY --from=builder /usr/local/bin/sonar /usr/local/bin/sonar
 COPY --from=builder /usr/local/sonar-scanner-cli /usr/local/sonar-scanner-cli
 COPY --from=builder /usr/local/cnes/cnesreport.jar /usr/local/cnes/cnesreport.jar
 COPY build/images/sonar-project.properties.d /usr/local/default-sonar-project.properties.d
-ADD https://raw.githubusercontent.com/opendevstack/ods-pipeline/master/build/package/scripts/configure-truststore.sh /usr/local/bin/configure-truststore
+ADD https://raw.githubusercontent.com/opendevstack/ods-pipeline/v0.14.0-preview.1/build/images/scripts/configure-truststore.sh /usr/local/bin/configure-truststore
 
 ENV PATH=/usr/local/sonar-scanner-cli/bin:$PATH
 

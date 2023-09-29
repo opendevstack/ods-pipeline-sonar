@@ -39,7 +39,7 @@ func testMain(m *testing.M) int {
 	nc, cleanup, err := ttr.SetupTempNamespace(
 		cc,
 		ott.StartSonarQube(),
-		ott.InstallODSPipeline(),
+		ott.InstallODSPipeline(nil),
 		installSonarQubeConfigMapAndSecret(),
 		ttr.InstallTaskFromPath(
 			filepath.Join(rootPath, "build/tasks/scan.yaml"),

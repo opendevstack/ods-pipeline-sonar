@@ -8,7 +8,7 @@ spec:
   description: |
     Scans repositories using SonarQube.
 
-    See https://github.com/opendevstack/ods-pipeline-sonar/blob/vlatest/docs/scan.adoc
+    See https://github.com/opendevstack/ods-pipeline-sonar/blob/v0.2.1/docs/scan.adoc
   params:
     - name: working-dir
       description: |
@@ -23,7 +23,7 @@ spec:
   steps:
     - name: scan-with-sonar
       # Image is built from build/package/Dockerfile.scan.
-      image: 'ghcr.io/opendevstack/ods-pipeline-sonar/scan:latest'
+      image: 'ghcr.io/opendevstack/ods-pipeline-sonar/scan:0.2.1'
       env:
         - name: HOME
           value: '/tekton/home'

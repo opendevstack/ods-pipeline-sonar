@@ -10,6 +10,12 @@ listed in the changelog.
 
 ## [Unreleased]
 
+## [0.2.1] - 2023-10-09
+
+### Fixed
+
+- Fix permissions of configure-truststore script ([#4](https://github.com/opendevstack/ods-pipeline-sonar/pull/4))
+
 ## [0.2.0] - 2023-10-09
 
 ### Changed
